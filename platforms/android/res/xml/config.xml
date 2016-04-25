@@ -22,17 +22,17 @@
     </feature>
     <name>ionic-sandpit</name>
     <description>
-        An Ionic Framework and Cordova project.
+        An Application designed for work with SandPit webapp.
     </description>
     <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+      Alejandro Sánchez Cabana
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <allow-navigation href="*" />
 </widget>
