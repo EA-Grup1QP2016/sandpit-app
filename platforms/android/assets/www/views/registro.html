@@ -1,0 +1,49 @@
+<div class="jumbotron text-center">
+    <h1>Página registro</h1>
+    <div class="fd-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-20 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" align="center">Registro de nuevo usuario</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Nombre y apellidos" ng-disabled="!edit" ng-model="newUser.fullName" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Localización" ng-disabled="!edit" ng-model="newUser.location" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="email" placeholder="E-mail" ng-disabled="!update || !edit" ng-model="newUser.email" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" placeholder="Contraseña" ng-disabled="!edit" ng-model="newUser.password" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" placeholder="Repite contraseña" ng-disabled="!edit" ng-model="pass2" autofocus>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Guardar sesión
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+
+                                        </label>
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <button  class="btn btn-lg btn-success btn-block" ng-disabled="error || incomplete" ng-hide="create" ng-click="createUser()">Registrarse</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

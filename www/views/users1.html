@@ -1,0 +1,65 @@
+<div>
+    <h1 class="page-header">Control de usuarios</h1>
+    <!-- Lista de usuarios -->
+    <br>
+    <div class="col-md-12 col-md-offset-4">
+        <div class="chat-panel panel panel-default">
+            <div class="panel-heading"><h3>Lista de usuarios</h3></div>
+            <div class="panel-footer">
+                <table style="width:100%">
+                    <tr> 
+                        <th type="text">Edit</th> 
+                        <br>
+                        <th type="text">Name</th> 
+                        <br>
+                        <th type="text">Location</th> 
+                        <br>
+                        <th type="text">Email</th> 
+                        <br>
+                    </tr>  
+                    <tr ng-repeat="user in users"> 
+                        <td> 
+                            <button class="w3-btn-floating-large w3-teal" ng-click="selectUser(user)">&#9998;</button> 
+                        </td> 
+                        <td type="text">{{ user.fullName }}</td> 
+                        <td type="text">{{ user.location }}</td> 
+                        <td type="text">{{ user.email }}</td> 
+                        <td> 
+                            <button ng-click="deleteUser(user._id)">x</button> 
+                        </td> 
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Crear y editar Usuarios -->
+            <div class="col-md-7 col-md-offset-2">
+                <div class="chat-panel panel panel-default">
+                    <div class="panel-heading"><h3>{{header}}</h3></div>
+                    <div class="panel-footer">
+                        <input class="w3-input w3-border" type="text" ng-disabled="!edit" ng-model="newUser.fullName" placeholder="Nombre y apellidos">
+                        <br>
+                        <br>
+                        <input class="w3-input w3-border" type="text" ng-disabled="!edit" ng-model="newUser.location" placeholder="Localización">
+                        <br>
+                        <br>
+                        <input class="w3-input w3-border" type="email" ng-disabled="!update || !edit" ng-model="newUser.email" placeholder="Email">
+                        <br>
+                        <br>
+                        <input class="w3-input w3-border" type="password" ng-disabled="!edit" ng-model="newUser.password" placeholder="Contraseña">
+                        <br>
+                        <br>
+                        <input class="w3-input w3-border" type="password" ng-disabled="!edit" ng-model="pass2" placeholder="Repite contraseña">
+                        <br>
+                        <br>
+                        <button class="w3-btn-floating-large w3-teal" ng-disabled="error || incomplete" ng-hide="create" ng-click="createUser()">+</button>
+                        <button class="w3-btn w3-teal" ng-hide="update" ng-disabled="error || incomplete" ng-click="editUser()">Actualizar</button>
+
+                    </div>
+                </div>
+            </div>
+            <!-- FIN/Crear y editar Usuarios -->
+</div>
+
+
+

@@ -1,0 +1,15 @@
+{
+  "name": "sandPit",
+  "version": "0.0.1",
+  "homepage": "http://sand-pit.me/",
+  "authors": [
+    "EA Grupo 1"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "1.3.0-beta.17",
+    "angular-route": "1.3.0-beta.7",
+    "angularjs-geolocation": "0.1.1",
+    "modernizr": "3.0.0"
+  }
+}

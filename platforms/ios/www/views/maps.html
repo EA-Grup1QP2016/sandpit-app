@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="header">
+        <!--<ul class="nav nav-pills pull-right">-->
+            <!--<li active><a href="">Join the Team</a></li>-->
+            <!--<li disabled><a href="">Find Teammates</a></li>-->
+        <!--</ul>-->
+        <h3 class="text-muted">Localización de Parques</h3>
+    </div>
+    <!-- Map and Side Panel -->
+    <div class="row content">
+        <!-- Google Map -->
+        <div class="col-md-7">
+            <div id="map" style="width:745px; height:645px"></div>
+        </div>
+        <!-- Side Panel -->
+        <div class="col-md-8 col-md-offset-12">
+            <div class="panel panel-default">
+                <!-- Panel Title -->
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center">Registra un parque que conozcas! <span class="glyphicon glyphicon-map-marker"></span></h2>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                    <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+                    <form name ="addForm" novalidate>
+                        <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                        <div class="form-group">
+                            <label for="name">Nombre del Parque <span class="badge">Rellena todos los campos</span></label>
+                            <input type="text" class="form-control" id="name" placeholder="Nombre..." ng-model="formData.name" required>
+                        </div>
+                        <!--<label class="radio control-label">Gender</label>-->
+                        <!--<div class="radio">-->
+                            <!--<label>-->
+                                <!--<input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">-->
+                                <!--Male-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <!--<div class="radio" required>-->
+                            <!--<label>-->
+                                <!--<input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">-->
+                                <!--Female-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <!--<div class="radio">-->
+                            <!--<label>-->
+                                <!--<input type="radio" name="optionsRadios" id="radioother" value="What's it to ya?" ng-model="formData.gender">-->
+                                <!--What's it to ya?-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label for="price">Precio de entrada (€)</label>
+                            <input type="number" class="form-control" id="price" placeholder="0" ng-model="formData.price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descripción del parque</label>
+                            <input type="text" class="form-control" id="description" placeholder="Descripción..." ng-model="formData.description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="latitude">Latitud</label>
+                            <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude">Longitud</label>
+                            <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="verified">Verificar localización por HTML5? <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
+                            <input type="text" class="form-control" id="verified" placeholder= "Añadido correctamente" ng-model="formData.htmlverified" readonly>
+                        </div>
+                        <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
+                        <button type="submit" class="btn btn-danger btn-block" ng-click="createSandpit()" ng-disabled="addForm.$invalid">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>

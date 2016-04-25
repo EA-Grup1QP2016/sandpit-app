@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" ng-app='angularRoutingApp'>
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SandPit - Encuentra eventos deportivos cerca tuyo.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico"/>
+    <link rel="canonical" href="http://sand-pit.me"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fd.min.css" />
+    <style type="text/css"></style>
+    <script type="text/javascript" src="js/lib-bundle.min.js?v=75b" ></script>
+    <script type="text/javascript" src="js/jquery-plugins.min.js?v=75b" ></script>
+
+    <!-- Controlador dels parcs i events (amb gmaps)-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLRQuMbzorcGujWn_76SLxzF3IkwoTM38"></script>
+    <script src="bower_components/modernizr/bin/modernizr"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+    <!-- Controlador de les vistes-->
+    <script src="js/routes.js"></script>
+    <!-- Controlador del mapa-->
+    <script src="js/gservice.js"></script>
+
+
+</head>
+<body ng-controller='mainController' class="platform-android platform-cordova platform-webview">
+
+<!-- Usamos el controlador principal -->
+
+<div class="fd-site-wrapper">
+    <!-- header -->
+    <div class="ad-wrap">
+        <div class="fd-ad fd-leaderboard" id="dfp_leaderboard" data-dfp-type="dfp_leaderboard" data-dfp="loaded"></div>
+    </div>
+
+    <a name="top"></a>
+
+    <div class="fd-header-wrap analytic-box" data-module="globalHeader">
+        <div class="navbar navbar-default navbar-static-top" role="navigation" id="fdc-navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#fdc-navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="icon-fdc-burger"></i>
+                    </button>
+                    <div id="fd-logo">
+                        <div class="fd-logo">
+                            <object data="images/logo.svg" type="image/svg+xml" height="100%" width="100%" title="SandPit - Encuentra eventos deportivos cerca tuyo.">
+                            </object>
+                        </div>
+                    </div>
+
+
+
+                    <div class="fd-search">
+                        <form id="search-form" action="search-all.html" data-params="">
+                            <div class="fd-search-group">
+                                <i class="icon-btn icon-fdc-search"></i>
+                                <input type="search" placeholder=" Buscar eventos..." />
+                                <div class="ta-list" >
+                                    <div class="list-title"></div>
+                                    <ul></ul>
+                                </div>
+                            </div>
+                            <span class="fd-search-cancel">cancel</span>
+                            <a class="fd-back-to-top" href="#top"><i class="icon-fdc-arrow-up"></i>TOP</a>
+                        </form>
+                    </div>
+
+                    <ul class="nav-links">
+
+                        <!-- Sign Up/Login -->
+                        <li class="hidden-xs">
+                            <a href="#login"  class="navbar-toggle fd-log-btn sso-login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="#registro"  class="navbar-toggle fd-log-btn sso-login"><span class="glyphicon glyphicon-user"></span> Registrarse</a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="#maps"  class="navbar-toggle fd-log-btn sso-login"><span class="glyphicon glyphicon-map-marker"></span> Maps</a>
+                        </li>
+
+                        <!-- search button -->
+                        <li class="visible-xs hidden-sm">
+                            <button type="button" class="navbar-toggle fd-sch-btn" id="fd-search-button">
+                                <span class="sr-only">Toggle search field</span>
+                                <i class="icon-fdc-search"></i>
+                            </button>
+                        </li>
+                        <!--/search button -->
+                        <!-- /xs screen only -->
+                    </ul>
+                </div>
+                <!-- /Inicio menú inicial -->
+
+                <div class="navbar-collapse fdc-menu collapse" id="fdc-navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Inicio</a></li>
+                        <li>
+                            <a data-clicktrack="true"  data-toggle="dropdown"><span class="glyphicon glyphicon-map-marker"></span> Eventos</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Crear</a></li>
+                                    <li><a href="#eventos" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Ver</a></li>
+                                </ul>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                        <a data-clicktrack="true"  data-toggle="dropdown"><span class="glyphicon glyphicon-map-marker"></span> Parques</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Crear</a></li>
+                                <li><a href="#parques" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Ver</a></li>
+                            </ul>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>                    <li>
+                        <a data-clicktrack="true"  data-toggle="dropdown"><span class="glyphicon glyphicon-map-marker"></span> Gestión</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#parques" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Eventos</a></li>
+                                <li><a href="#parques" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Parques</a></li>
+                                <li><a href="#users" data-clicktrack="true"><span class="glyphicon glyphicon-map-marker"></span> Usuarios</a></li>
+                            </ul>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                        <li class="navbar-footer">
+                            <ul>
+                                <li><a href="https://github.com/EA-Grup1QP2016/Sand-Pit" data-clicktrack="true">GitHub</a></li>
+                                <li><a href="#about" data-clicktrack="true">¿Quiénes somos?</a></li>
+                                <li><a href="https://eagrup1curs2016.wordpress.com/" data-clicktrack="true">Blog</a></li>
+                                <li><a href="mailto:admin@sand-pit.me" data-clicktrack="true">Contáctanos</a></li>
+                            </ul>
+                            <div class="fd-navbar-tools">
+                                <dl>
+                                    <dd>
+                                        <a class="icon-fdc-facebook" href="http://www.facebook.com/" target="_blank" data-clicktrack="true"></a>
+                                    </dd>
+
+                                    <dd>
+                                        <a class="icon-fdc-twitter" href="https://twitter.com/" target="_blank" data-clicktrack="true"></a>
+                                    </dd>
+                                    <dd>
+                                        <a class="icon-fdc-google" href="https://plus.google.com/" target="_blank" data-clicktrack="true"></a>
+                                    </dd>
+                                    <dd>
+                                        <a class="icon-fdc-instagram" href="http://instagram.com/" target="_blank" data-clicktrack="true"></a>
+                                    </dd>
+
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /Final Menu inicial -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Cuerpo de la web -->
+
+    <div id="routes">
+        <!-- Aquí inyectamos las vistas -->
+        <div ng-view></div>
+
+    </div>
+
+    <!-- Ajusta contenido de la web -->
+
+    <div class="fd-content"></div>
+</div>
+
+</body>
+</html>
+
+
